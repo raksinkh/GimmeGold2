@@ -93,7 +93,7 @@ namespace Game1
             }
             for (int i = 0; i <= 800; i++)
             {
-                position = new Vector2(i * 40, 440);
+                position = new Vector2(i * 40, 560);
                 spriteBatch.Draw(_texture, position, Color.White);
             }
         }

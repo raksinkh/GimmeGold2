@@ -15,6 +15,8 @@ namespace Game1
         private Vector2 test_position;
         private Model mod1;
         public int[,] mode;
+        public int g_height =600;//สูง
+        public int g_width = 800;//ยาว
 
 
         //private object keys;
@@ -44,6 +46,9 @@ namespace Game1
         /// </summary>
         protected override void LoadContent()
         {
+            graphics.PreferredBackBufferHeight = g_height;
+            graphics.PreferredBackBufferWidth = g_width;
+            graphics.ApplyChanges();
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             test_position = new Vector2(0, 0);
@@ -107,11 +112,13 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mode = new int[,]
            {
-            { 1,2,2,1,2,3,4,1,2,3,4,1,3,2,1,4,3,1 },
+            { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
             { 2,2,1,1,2,3,4,1,2,3,4,1,3,2,1,4,3,3 },
             { 3,2,1,1,2,3,1,1,2,3,4,1,1,2,1,4,3,4 },
             { 4,2,2,1,2,3,4,4,2,3,1,1,3,2,1,4,3,2 },
             { 2,2,2,1,2,4,4,1,2,3,4,1,3,2,1,4,3,3 },
+            { 2,2,2,1,2,3,4,1,2,3,4,1,3,2,1,4,1,1 },
+            { 2,2,2,1,2,3,4,1,2,3,4,1,3,2,1,4,1,1 },
             { 2,2,2,1,2,3,4,1,2,3,4,1,3,2,1,4,1,1 },
            };
 
@@ -122,11 +129,11 @@ namespace Game1
             _robot.Draw(spriteBatch);
             _bedrock.DrawWall(spriteBatch, _bedrock.position);
             mod1.drawmodel(spriteBatch);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 18; j++)
                 {
-                    test_position = new Vector2((j * 40) + 40, (i * 40) + 200);
+                    test_position = new Vector2((j * 40) + 40, (i * 40) + 240);
                     int x = mode[i, j];
                     if (x == 1)
                     {
